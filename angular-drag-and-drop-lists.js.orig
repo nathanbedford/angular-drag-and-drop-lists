@@ -148,7 +148,12 @@
         }
 
         // Add CSS classes. See documentation above.
+<<<<<<< HEAD
         element.addClass(classForDragging);
+        $timeout(function() { element.addClass(classForDraggingSource); }, 0);
+=======
+        element.addClass("dndDragging");
+>>>>>>> feature/prevent-ui-flickr-on-dragstart
 
         // We'll set this now and add the class 'dndDraggingSource' to it when we start moving the item.
         // This needs to be in sync with the process of insert the placeholder into the list
@@ -158,7 +163,7 @@
         }else{
           $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
         }
-
+        
         // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
         if (event._dndHandle && event.dataTransfer.setDragImage) {
           event.dataTransfer.setDragImage(element[0], 0, 0);
@@ -201,9 +206,15 @@
         // Clean up
         dndState.isDragging = false;
         dndState.callback = undefined;
-        dndState.currentDragItem = undefined;
+<<<<<<< HEAD
         element.removeClass(classForDragging);
         element.removeClass(classForDraggingSource);
+=======
+        dndState.currentDragItem = undefined;
+        element.removeClass("dndDragging");
+        element.removeClass("dndDraggingSource");
+
+>>>>>>> feature/prevent-ui-flickr-on-dragstart
         event.stopPropagation();
 
         // In IE9 it is possible that the timeout from dragstart triggers after the dragend handler.
@@ -327,7 +338,7 @@
       // at the location where the element would be inserted after dropping.
       var placeholder = getPlaceholderElement();
       placeholder.remove();
-
+      
       var placeholderNode = placeholder[0];
       var listNode = element[0];
       var listSettings = {};
@@ -376,7 +387,7 @@
           // that we put the placeholder on the dom.  This prevents some UI flashing
           if(dndState.currentDragItem){
             dndState.currentDragItem.addClass("dndDraggingSource");
-        }
+          }
 
         }
 
