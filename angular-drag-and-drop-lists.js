@@ -154,9 +154,13 @@
         // This needs to be in sync with the process of insert the placeholder into the list
 
         if(parentIsList){
-          dndState.currentDragItem = element;
+          dndState.currentDragItem = {
+            element: element,
+            draggingSourceClass: classForDraggingSource
+          };
+
         }else{
-          $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
+          $timeout(function() { element.addClass(classForDraggingSource); }, 0);
         }
 
         // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
@@ -375,8 +379,8 @@
           // hides the original item, we want to make sure we do that at the same time
           // that we put the placeholder on the dom.  This prevents some UI flashing
           if(dndState.currentDragItem){
-            dndState.currentDragItem.addClass("dndDraggingSource");
-        }
+            dndState.currentDragItem.element.addClass(dndState.currentDragItem.draggingSourceClass);
+          }
 
         }
 

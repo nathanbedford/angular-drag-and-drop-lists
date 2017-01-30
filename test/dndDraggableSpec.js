@@ -106,14 +106,15 @@ describe('dndDraggable', function() {
     it('adds overridden CSS classes to element', inject(function($timeout) {
       var htmlWithClass = '<div dnd-draggable="{hello: \'world\'}" dnd-class-for-dragging="dnd-dragging" ' +
         'dnd-class-for-dragging-source="dnd-dragging-source"></div>';
-      element = compileAndLink(htmlWithClass);
+      var listWithDragItem = compileAndLink('<div dnd-list="[]">' + htmlWithClass + '</div>');
+      element = listWithDragItem.find('[dnd-draggable]');
 
-      Dragstart.on(element);
+      var dragstart = Dragstart.on(element);
 
       expect(element.hasClass('dnd-dragging')).toBe(true);
       expect(element.hasClass('dnd-dragging-source')).toBe(false);
 
-      $timeout.flush(0);
+      dragstart.dragover(listWithDragItem);
       expect(element.hasClass('dnd-dragging-source')).toBe(true);
     }));
 
