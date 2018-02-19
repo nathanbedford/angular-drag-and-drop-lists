@@ -2,6 +2,9 @@ angular-drag-and-drop-lists
 ===========================
 Angular directives that allow you to build sortable lists with the native HTML5 drag & drop API. The directives can also be nested to bring drag & drop to your WYSIWYG editor, your tree, or whatever fancy structure you are building.
 
+## Forked ##
+From https://github.com/marceljuenemann/angular-drag-and-drop-lists
+
 ## Demo
 * [Nested Lists](http://marceljuenemann.github.io/angular-drag-and-drop-lists/demo/#/nested)
 * [Simple Lists](http://marceljuenemann.github.io/angular-drag-and-drop-lists/demo/#/simple)
